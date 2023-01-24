@@ -1,6 +1,6 @@
-# Discord.py Pagination
+# discord.py Pagination
 
-本プログラムでは、Discord.pyにてページ表示をサポートするクラスを定義しました。
+本プログラムでは、discord.pyにてページ表示をサポートするクラスを定義しました。
 
 ## クラスとメソッドの詳細
 
