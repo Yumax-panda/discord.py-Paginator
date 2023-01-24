@@ -79,7 +79,7 @@ class Paginator(discord.ui.View):
         self.delete_on_timeout: bool = delete_on_timeout
 
         if not all(isinstance(p, Page) for p in pages):
-            raise ValueError('`pages` argument only receive list[Page].')
+            raise ValueError('`pages` argument only receives list[Page].')
 
         self.user_check: bool = author_check
         self.user = None
