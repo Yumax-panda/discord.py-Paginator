@@ -18,7 +18,7 @@ if TYPE_CHECKING:
 
 class Page:
 
-    __slots__ =('_content', '_embeds','_files')
+    __slots__ =　('_content', '_embeds',　'_files')
 
     def __init__(
         self,
