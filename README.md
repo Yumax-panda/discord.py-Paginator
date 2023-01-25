@@ -120,7 +120,7 @@ async def info(ctx: commands.Context):
         embeds.append(Embed(title=str(member),description=f'id {member.id}'))
 
     await Paginator(
-        pages = [Page(embeds = [e]) for e in embeds],
+        pages = Page.to_pages(embeds=embeds),
         add_stop_button = True,
         delete_on_timeout = True
     ).send(ctx)
