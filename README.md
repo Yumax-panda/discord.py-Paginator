@@ -16,7 +16,8 @@ class Page(
 `content`か`embeds`のいずれかは`None`以外でないといけません。
 
 
-### パラメータ
+**パラメータ**
+---
 
 content (`str`) - １ページに表示する文字列。<br>
 embeds (`list[discord.Embed]`) - １ページに表示する埋め込みのリスト。<br>
@@ -35,7 +36,9 @@ def to_pages(
 配列の長さが違う場合は、引数の配列で最大の長さに合わせてページを作成します。　<br>
 各ページに要素を1つずつしか設定しない場合はこのメソッドを使うことを推奨します。 <br>
 
-### 引数
+**引数**
+---
+
 contents (`list[str]`) - 各要素が1ページあたりに添付される文字になります。<br>
 embeds (`list[Embed]`) - 各要素が1ページあたりに添付される埋め込みになります。<br>
 files (`list[File]`) - 各要素が1ページあたりに添付されるファイルになります。<br>
@@ -55,7 +58,8 @@ class Paginator(
 
 ページをまとめたクラス。`discord.ui.View`クラスを継承しています。
 
-### パラメータ
+**パラメータ**
+---
 
 pages (`list[Page]`) - 送信するページのリスト。<br>
 add_stop_button (`bool`) - ページを停止させるボタンを付けるかどうか。<br>
@@ -63,7 +67,8 @@ author_check (`bool`) - ページの送信者のみがページを操作でき�
 delete_on_timeout (`bool`) - タイムアウト時にページを削除するかどうか。<br>
 timeout (`float`) -　`discord.ui.View`の`timeout`と同じです。　<br>
 
-### メソッド
+**メソッド**
+---
 
 ```py
 async def send(context: commands.Context) -> Message
