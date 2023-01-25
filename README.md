@@ -15,11 +15,32 @@ class Page(
 １ページで表示する内容を定義したクラス。<br>
 `content`か`embeds`のいずれかは`None`以外でないといけません。
 
+
 ### パラメータ
 
 content (`str`) - １ページに表示する文字列。<br>
 embeds (`list[discord.Embed]`) - １ページに表示する埋め込みのリスト。<br>
 files (`list[discord.File]`) - １ページに添付するファイルのリスト。 <br>
+
+```py
+@classmethod
+def to_pages(
+    contents: list[str] = [],
+    embeds: list[Embed] = [],
+    files: list[File] = []
+) -> list[Page]
+```
+
+各ページに`contents`, `embeds`, `files`の要素を一つずつセットするメソッド。 <br>
+配列の長さが違う場合は、引数の配列で最大の長さに合わせてページを作成します。　<br>
+各ページに要素を1つずつしか設定しない場合はこのメソッドを使うことを推奨します。 <br>
+
+### 引数
+contents (`list[str]`) - 各要素が1ページあたりに添付される文字になります。<br>
+embeds (`list[Embed]`) - 各要素が1ページあたりに添付される埋め込みになります。<br>
+files (`list[File]`) - 各要素が1ページあたりに添付されるファイルになります。<br>
+
+
 
 ```py
 
