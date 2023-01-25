@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 from typing import TYPE_CHECKING, Optional, Union
+from itertools import zip_longest
+
 from discord.ui import button, Button
 from discord import ButtonStyle
 import discord
@@ -18,7 +20,11 @@ if TYPE_CHECKING:
 
 class Page:
 
-    __slots__ =　('_content', '_embeds',　'_files')
+    __slots__ =(
+        '_content',
+        '_embeds',
+        '_files'
+    )
 
     def __init__(
         self,
@@ -61,6 +67,15 @@ class Page:
         self._files = value
 
 
+    @classmethod
+    def to_pages(
+        cls,
+        contents: list[str] = [],
+        embeds: list[Embed] = [],
+        files: list[File] = [],
+    ) -> list[Page]:
+        return [cls(c,[e],[f]) for c,e,f in zip_longest(contents,embeds,files,fillvalue=None)]
+
 
 class Paginator(discord.ui.View):
 
@@ -79,7 +94,7 @@ class Paginator(discord.ui.View):
         self.delete_on_timeout: bool = delete_on_timeout
 
         if not all(isinstance(p, Page) for p in pages):
-            raise ValueError('`pages` argument only receives list[Page].')
+            raise ValueError('`pages` argument only receive list[Page].')
 
         self.user_check: bool = author_check
         self.user = None
@@ -249,4 +264,3 @@ class Paginator(discord.ui.View):
     async def stop_pages(self, interaction: Interaction, button: Button):
         await interaction.response.defer()
         await interaction.delete_original_response()
-        self.stop()
